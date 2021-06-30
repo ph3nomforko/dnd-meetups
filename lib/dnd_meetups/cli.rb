@@ -35,11 +35,12 @@ class DNDMeetups::CLI
 
     def display_picked_game(picked_game)
         game = @games[picked_game - 1]
-        puts "#{game.name}"
-        puts "Game Type: #{game.game_type}"
+        puts "Title: #{game.name}"
+        puts "Game System: #{game.game_type}"
         puts "The next game will be #{game.next_game}"
-        #puts "The game needs #{game.players_needed} players."
-        #puts "This game is played #{game.frequency}."
+        puts "The game needs #{game.players_needed} players."
+        puts "This game's type is a #{game.game_type}."
+        puts "This game is played #{game.frequency}."
         #puts "This game uses #{game.audio_visual} to play."
         #puts "Language: #{game.language}"
         #puts "Are new players welcome? #{game.new_players}"
