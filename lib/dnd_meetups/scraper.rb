@@ -1,22 +1,18 @@
 class DNDMeetups::Scraper
-    def self.scrape_roll_twenty
-        doc = Nokogiri::HTML(open(https://app.roll20.net/lfg/search/))
 
-        meetup = self.new
-        meetup.name = doc.search("a.lfglistingname").text # Exemplar code
-        meetup.time = doc.search("span class.localtime").text
-        meetup.game_type = doc.search("td class strong").text
-        
-        meetup.url = doc.search("a.lfglisting").first.attr("href")
+    def self.scrape_games_list
+        doc = Nokogiri::HTML(open("https://app.roll20.net/lfg/search/"))
 
-        meetup
+        meetups = doc.css("div.campaigns")
+        meetups.each do |m|
+            name = g.css("a.lfglistingname").text
+            game_url = g.css("a.lfglistingname").attribute("href").text
+            doc_nest = Nokogiri::HTML(open("https://app.roll20.net#{game_url}"))
+            game = doc_nest("class.lfgtable")
+            game.each do |g|
+                game_typs = ("span.playinggame").text
+                next_game = ("span.nextgame").text
+            end
+            DNDMeetups::Meetup.new(name, game_url)
+        end
     end
-
-    def self.scrape_game_info
-        Meetup.game.available_seats = doc.search("span style").text
-        meetup.game.description = doc.search("span style description").text
-        meetup.game.name = doc.search("a.lfglistingname").text # Exemplar code
-        meetup.game.time = doc.search("span class.localtime").text
-        meetup.game.game_type = doc.search("td class strong").text
-    end
-end

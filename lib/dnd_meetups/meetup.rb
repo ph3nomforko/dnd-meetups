@@ -1,22 +1,23 @@
 class DNDMeetups::Meetup
 
-    attr_accessor :name, :location, :game
-
-    def self.today
-        #Return a bunch of meetups
-        # Here DOCS for strings http://blog.jayfields.com/2006/ruby-multiline-strings-here-doc-or.html
-        puts "This Week's Dungeons and Dragons Meetups"
-        puts "Meetups"
-        #Scrape website
-        self.scrape_meetups     
-    end
-
-    def self.scrape_meetups
-        meetups = []
-        meetups << self.scrape_roll_twenty
-        meetups
-    end
-
+    attr_accessor :name, :game_url, :game_type, :next_game, :players_needed, :frequency, :audio_visual, :language, :new_players, :mature_content, :pay_to_play, :pick_up_game
+    @@all = []
     
+    def initialize(name=nil, game_url=nil)
+        @name = name
+        @game_url = game_url
+        save
+    end
+
+    def self.all
+        @@all
+    end 
+
+    def save
+        @@all << self
+    end
+
+    def game_type
+        @game_type 
 
 end
