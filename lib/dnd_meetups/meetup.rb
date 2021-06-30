@@ -5,7 +5,7 @@ class DNDMeetups::Meetup
     
     def initialize(name=nil, game_url=nil)
         @name = name
-        @game_url = game_url
+        @game_url = "https://app.roll20.net#{game_url}"
         save
     end
 
@@ -18,6 +18,7 @@ class DNDMeetups::Meetup
     end
 
     def game_type
-        @game_type 
+        @game_type
+    end 
 
 end
