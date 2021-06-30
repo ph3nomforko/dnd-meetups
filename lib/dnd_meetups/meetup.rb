@@ -24,7 +24,7 @@ class DNDMeetups::Meetup
     def next_game
         @next_game ||= doc.css("span.nextgame").text.strip
         @next_game = Time.at(@next_game.to_i)
-        @next_game.strftime("at %I:%M %P on %B %e, %Y.")
+        @next_game.strftime("%l:%M %P on %B %d, %Y.")
     end
 
     def players_needed
@@ -37,6 +37,10 @@ class DNDMeetups::Meetup
 
     def frequency
         @frequency ||= doc.css("tbody tr[5] td[2]").text.strip
+    end
+
+    def audio_visual
+        @audio_visual ||= doc.css("tbody tr[6] td[2]").text.strip
     end
 
     def doc
