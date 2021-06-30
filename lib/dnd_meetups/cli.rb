@@ -18,15 +18,20 @@ class DNDMeetups::CLI
     end
 
     def list_games
-        puts "Here is a list of thirty upcoming games. Pick one to see more:"
+        puts "Here is a list of upcoming games:"
         @games.each.with_index(1) do |meetup, i|
             puts "#{i}. #{meetup.name}"
         end
+        puts "Select the number associated with a game to see more info:"
     end
 
     def get_picked_game
         picked_game = gets.strip.to_i
-        display_picked_game(picked_game) if valid_input(picked_game, @games)
+        if valid_input(picked_game, @games)
+            display_picked_game(picked_game)
+        else
+            list_games
+        end
     end
 
     def valid_input(input, list)
@@ -36,21 +41,23 @@ class DNDMeetups::CLI
     def display_picked_game(picked_game)
         game = @games[picked_game - 1]
         puts "Title: #{game.name}"
-        puts "Game System: #{game.game_system}."
-        puts "Next Game: #{game.next_game}"
-        puts "Players needed #{game.players_needed}."
-        puts "Game Type: #{game.game_type}."
-        puts "Game Frequency: #{game.frequency}."
-        #puts "This game uses #{game.audio_visual} to play."
-        #puts "Language: #{game.language}"
-        #puts "Are new players welcome? #{game.new_players}"
-        #puts "Is mature content allowed in this game? #{game.mature_content}"
-        #puts "How much does it cost to play this game? #{game.pay_to_play}"
-        #puts "Is this a pick up game? #{game.pick_up_game}"
+        puts "Game System:         #{game.game_system}."
+        puts "Next Game:           #{game.next_game}"
+        puts "Players Needed:      #{game.players_needed}"
+        puts "Game Type:           #{game.game_type}"
+        puts "Game Frequency:      #{game.frequency}"
+        puts "Audio/Visual:        #{game.audio_visual}"
+        puts "Language:            #{game.language}"
+        puts "New Player Friendly? #{game.new_players}"
+        puts "Mature Content(18+)? #{game.mature_content}"
+        puts "Cost to Play?        #{game.pay_to_play}"
+        puts "Pick Up Game?        #{game.pick_up_game}"
+        puts "\n#{game.description}"
+        puts "\nLink to Game:        https://app.roll20.net#{game.game_url}"
     end
 
     def next_move
-        puts "Need to see another game? Type 'exit' to quit or hit any key to see the game list again."
+        puts "\nNeed to see another game? Type 'exit' to quit or hit any key to see the game list again."
         @input = gets.strip
     end
 

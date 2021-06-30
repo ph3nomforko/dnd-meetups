@@ -43,6 +43,30 @@ class DNDMeetups::Meetup
         @audio_visual ||= doc.css("tbody tr[6] td[2]").text.strip
     end
 
+    def language
+        @language ||= doc.css("tbody tr[7] td[2]").text.strip
+    end
+
+    def new_players
+        @new_players ||= doc.css("tbody tr[8] td[2]").text.strip
+    end
+
+    def mature_content
+        @mature_content ||= doc.css("tbody tr[9] td[2]").text.strip
+    end
+
+    def pay_to_play
+        @pay_to_play ||= doc.css("tbody tr[10] td[2]").text.strip
+    end
+
+    def pick_up_game
+        @pick_up_game ||= doc.css("tbody tr[11] td[2]").text.strip
+    end
+
+    def description
+        @description ||= doc.css("div.description").text.strip
+    end
+
     def doc
         url = "https://app.roll20.net#{game_url}"
         @doc ||= Nokogiri::HTML(open(url))
