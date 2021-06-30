@@ -12,5 +12,7 @@ require "dnd_meetups"
 # Pry.start
 
 require "irb"
+require "pry"
+
 
 DNDMeetups::CLI.new.call
