@@ -37,7 +37,7 @@ class DNDMeetups::CLI
         game = @games[picked_game - 1]
         puts "#{game.name}"
         puts "Game Type: #{game.game_type}"
-        puts "The next game will be on #{game.next_game}"
+        puts "The next game will be #{game.next_game}"
         #puts "The game needs #{game.players_needed} players."
         #puts "This game is played #{game.frequency}."
         #puts "This game uses #{game.audio_visual} to play."

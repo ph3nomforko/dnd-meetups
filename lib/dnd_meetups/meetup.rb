@@ -23,6 +23,8 @@ class DNDMeetups::Meetup
 
     def next_game
         @next_game ||= doc.css("span.nextgame").text.strip
+        @next_game = Time.at(@next_game.to_i)
+        @next_game.strftime("at %I:%M %P on %B %e, %Y.")
     end
 
     def doc
