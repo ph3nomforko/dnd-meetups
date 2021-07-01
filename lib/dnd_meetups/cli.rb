@@ -57,7 +57,7 @@ class DNDMeetups::CLI
     end
 
     def next_move
-        puts "\nNeed to see another game? Type 'exit' to quit or hit any key to see the game list again."
+        puts "\nNeed to see another game? Hit any key to see the list again! Type 'exit' to quit."
         @input = gets.strip
     end
 

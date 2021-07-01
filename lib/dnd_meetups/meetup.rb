@@ -24,7 +24,7 @@ class DNDMeetups::Meetup
     def next_game
         @next_game ||= doc.css("span.nextgame").text.strip
         @next_game = Time.at(@next_game.to_i)
-        @next_game.strftime("%l:%M %P on %B %d, %Y.")
+        @next_game.strftime("%B %d, %Y at %l:%M %P.")
     end
 
     def players_needed

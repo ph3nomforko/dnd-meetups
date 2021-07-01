@@ -1,4 +1,8 @@
-require_relative '../config/environment'
+require_relative './dnd_meetups/version'
+require_relative './dnd_meetups/cli'
+require_relative './dnd_meetups/scraper'
+require_relative './dnd_meetups/meetup'
 
-module DNDMeetups
-end
+require 'pry'
+require 'nokogiri'
+require 'open-uri'
