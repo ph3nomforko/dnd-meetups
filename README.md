@@ -8,7 +8,9 @@ This Ruby Gem provides a CLI to look at 30 upcoming online table-top role-playin
 
 ## Usage
 
-TODO: Write usage instructions here
+Type the following and following and follow the prompts.
+
+    $ dnd_meetups
 
 ## Development
 
